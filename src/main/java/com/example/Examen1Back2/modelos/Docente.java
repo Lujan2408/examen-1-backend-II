@@ -3,21 +3,24 @@ import com.example.Examen1Back2.helpers.Especialidad;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "docente")
 public class Docente {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "especialidad", unique = false, length = 50, nullable = false)
+    @Enumerated(EnumType.STRING)
     private Especialidad especialidad;
 
-    @OneToMany(mappedBy = "docente")
+    @OneToMany(mappedBy = "docente", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value = "relaciondocentecurso")
-    private List<Curso> cursos;
+    private List<Curso> cursos = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id")
@@ -27,8 +30,7 @@ public class Docente {
     public Docente() {
     }
 
-    public Docente(Integer id, Especialidad especialidad, List<Curso> cursos, Usuario usuario) {
-        this.id = id;
+    public Docente(Especialidad especialidad, List<Curso> cursos, Usuario usuario) {
         this.especialidad = especialidad;
         this.cursos = cursos;
         this.usuario = usuario;
