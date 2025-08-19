@@ -17,7 +17,7 @@ public class Usuario {
     @Column(name = "correoElectronico", nullable = false, length = 50, unique = true)
     private String correoElectronico;
 
-    @Column (name = "contrasena", nullable = false, length = 8, unique = true)
+    @Column (name = "contrasena", nullable = false, length = 8)
     private String contrasena;
 
     @Column(name = "telefono", nullable = false, unique = true, length = 10)
@@ -34,14 +34,13 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nombre, String correoElectronico, String contrasena, String telefono, TipoUsuario tipoUsuario, Docente docente) {
+    public Usuario(Integer id, String nombre, String correoElectronico, String contrasena, String telefono, TipoUsuario tipoUsuario) {
         this.id = id;
         this.nombre = nombre;
         this.correoElectronico = correoElectronico;
         this.contrasena = contrasena;
         this.telefono = telefono;
         this.tipoUsuario = tipoUsuario;
-        this.docente = docente;
     }
 
     public Integer getId() {
@@ -92,11 +91,4 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Docente getDocente() {
-        return docente;
-    }
-
-    public void setDocente(Docente docente) {
-        this.docente = docente;
-    }
 }
