@@ -16,13 +16,13 @@ public class Docente {
     private Especialidad especialidad;
 
     //TODO: set correct relationships
-    @OneToMany(mappedBy = "docente")
+    /* @OneToMany(mappedBy = "docente")
     @JsonManagedReference(value = "docente-curso")
-    private List<Curso> cursos;
+    private List<Curso> cursos; */
 
     @OneToOne
-    @JoinColumn(name = "fk_usuario", referencedColumnName = "id_usuario")
-    @JsonManagedReference(value = "docente-usuario")
+    @JoinColumn(name = "fk_usuario", referencedColumnName = "id")
+    @JsonManagedReference(value = "relaciondocenteusuario")
     private Usuario usuario;
 
     public Docente() {

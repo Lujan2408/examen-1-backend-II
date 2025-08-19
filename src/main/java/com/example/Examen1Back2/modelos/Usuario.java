@@ -27,10 +27,9 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
 
-    //Estableciendo la relacion uno a uno con la tabla
     // TODO: set correctly the relationship
     @OneToOne(mappedBy = "usuario")
-    @JsonBackReference(value = "docente-usuario")
+    @JsonBackReference(value = "relaciondocenteusuario")
     private Docente docente;
 
     public Usuario() {
