@@ -15,10 +15,9 @@ public class Docente {
     @Column(name = "especialidad", unique = false, length = 50, nullable = false)
     private Especialidad especialidad;
 
-    //TODO: set correct relationships
-    /* @OneToMany(mappedBy = "docente")
-    @JsonManagedReference(value = "docente-curso")
-    private List<Curso> cursos; */
+    @OneToMany(mappedBy = "docente")
+    @JsonManagedReference(value = "relaciondocentecurso")
+    private List<Curso> cursos;
 
     @OneToOne
     @JoinColumn(name = "fk_usuario", referencedColumnName = "id")

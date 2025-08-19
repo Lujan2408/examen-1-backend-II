@@ -14,11 +14,10 @@ public class Curso {
     @Column(name = "nombre", nullable = false, length = 100, unique = true)
     private String nombre;
 
-    //TODO: set correct relationship
-    /* @ManyToOne
-    @JoinColumn(name="fk_docente", referencedColumnName = "id");
-    @JsonBackReference(value = "docente-curso")
-    Docente docente */
+    @ManyToOne
+    @JoinColumn(name = "fk_docente", referencedColumnName = "id")
+    @JsonBackReference(value = "relaciondocentecurso")
+    private Docente docente;
 
     public Curso() {
     }
