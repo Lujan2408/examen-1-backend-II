@@ -1,19 +1,21 @@
 package com.example.Examen1Back2.modelos;
+import com.example.Examen1Back2.helpers.Especialidad;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entit
+@Entity
+@Table(name = "docente")
 public class Docente {
-
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "especialidad", unique = false, length = 50, nullable = false)
+    private Especialidad especialidad;
 
-    private  String especialidad;
-
+    //TODO: set correct relationships
     @OneToMany(mappedBy = "docente")
     @JsonManagedReference(value = "docente-curso")
     private List<Curso> cursos;
@@ -23,21 +25,4 @@ public class Docente {
     @JsonManagedReference(value = "docente-usuario")
     private Usuario usuario;
 
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getEspecialidad() {
-        return especialidad;
-    }
-
-    public void setEspecialidad(String especialidad) {
-        this.especialidad = especialidad;
-    }
 }
