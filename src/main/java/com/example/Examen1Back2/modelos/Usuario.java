@@ -1,4 +1,5 @@
 package com.example.Examen1Back2.modelos;
+import com.example.Examen1Back2.helpers.TipoUsuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
@@ -25,7 +26,6 @@ public class Usuario {
 
     @Column(name = "tipoUsuario", nullable = false, unique = false)
     @Enumerated(EnumType.STRING)
-    // TODO: create ENUM type TipoUsuario
     private TipoUsuario tipoUsuario;
 
     //Estableciendo la relacion uno a uno con la tabla
